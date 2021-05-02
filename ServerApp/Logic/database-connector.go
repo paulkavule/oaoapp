@@ -14,7 +14,14 @@ func init() {
 	if _err != nil {
 		panic(_err)
 	}
-	db.AutoMigrate(Entities.PersonalInfo{}, Entities.IdentificationInfo{})
+	db.AutoMigrate(Entities.PersonalInfo{}, 
+		Entities.IdentificationInfo{}, 
+		Entities.ContactInfo{}, 
+		Entities.Country {},
+		Entities.Preferences{},
+		Entities.EmploymentDetails{},
+		Entities.Document{},
+	)
 	dbcon = db;
 }
 
@@ -23,6 +30,7 @@ type IDbHandler interface {
 	Insert(obj interface{}) bool
 	Update(obj interface{}) bool
 	Select(id string, obj interface{}) interface{}
+	RunQuery(query string, colValue [] string, obj interface{}) interface{}
 }
 
 type DbHandler struct{
@@ -51,5 +59,11 @@ func (db DbHandler) Select(id string, obj interface{}) interface{}{
 		dbcon.Where("request_id = ?", id).Find(obj)
 	}
 	
+	return obj
+}
+
+func (db DbHandler) RunQuery(query string, colValue [] string, obj interface{}) interface{}{
+
+	dbcon.Where(query, colValue).Find(obj)
 	return obj
 }

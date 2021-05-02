@@ -14,7 +14,8 @@ function OaoIdInfo(){
         nationality:'',
         countryOfResidence:'',
         idType:'',
-        idNumber:''
+        idNumber:'',
+        pep:''
     }
     const [idInfo, setIdInfo] = useState<IdInfo>(info)
     useEffect(() =>{

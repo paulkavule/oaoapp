@@ -25,6 +25,10 @@ function Template(){
                         <Route exact path='/opening/idinfo' component={OpeningTemplate}/>
                         <Route exact path='/opening/contactinfo' component={OpeningTemplate}/>
                         <Route exact path='/opening/residenceinfo' component={OpeningTemplate}/> 
+                        <Route exact path='/opening/preferences' component={OpeningTemplate}/> 
+                        <Route exact path='/opening/employmentinfo' component={OpeningTemplate}/> 
+                        <Route exact path='/opening/documentupload' component={OpeningTemplate}/> 
+                        <Route exact path='/opening/finish' component={OpeningTemplate}/> 
                     </Switch>
                 </Container>
             </div>
